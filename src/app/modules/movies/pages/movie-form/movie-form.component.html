@@ -1,0 +1,51 @@
+<app-header [title]="title" [isBack]="true"></app-header>
+<ion-content>
+  <ion-grid>
+    <form [formGroup]="movieForm" (submit)="submit()" *ngIf="movieForm">
+      <ion-item class="ion-margin-bottom">
+        <ion-label color="primary" position="floating" for="title">{{'MOVIES.FORM.TITLE' | translate}}</ion-label>
+        <ion-input name="title" formControlName="title" type="text" [placeholder]="'MOVIES.FORM.TITLE' | translate"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-label color="primary" position="floating" for="poster">{{'MOVIES.FORM.POSTER' | translate}}</ion-label>
+        <ion-input name="poster" formControlName="poster" type="text" [placeholder]="'MOVIES.FORM.POSTER' | translate"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-label color="primary" position="floating" for="genre">{{'MOVIES.FORM.GENRE' | translate}}</ion-label>
+        <ion-input (keyup.enter)="addGenre($event)" name="poster" type="text" formControlName="genre" [placeholder]="'MOVIES.FORM.GENRE' | translate"></ion-input>
+      </ion-item>
+      <div class="content-tag">
+        <span *ngFor="let genre of arrayGenres">#{{genre}}</span>
+      </div>
+      <ion-item class="ion-margin-bottom">
+        <ion-label color="primary" position="floating" for="actors">{{'MOVIES.FORM.ACTORS' | translate}}</ion-label>
+        <ion-select multiple="true" [placeholder]="'MOVIES.FORM.ACTORS' | translate" [value]="selectedActors" formControlName="actors">
+          <ng-container *ngFor="let actor of arrayActors">
+            <ion-select-option [value]="actor.id">{{actor.first_name}} {{actor.last_name}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-label color="primary" position="floating" for="companies">{{'MOVIES.FORM.COMPANIES' | translate}}</ion-label>
+        <ion-select [placeholder]="'MOVIES.FORM.COMPANIES' | translate" formControlName="companies">
+          <ng-container *ngFor="let companies of arrayCompanies">
+            <ion-select-option [value]="companies.id">{{companies.name}}</ion-select-option>
+          </ng-container>
+        </ion-select>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-label color="primary" position="floating" for="year">{{'MOVIES.FORM.YEAR' | translate}}</ion-label>
+        <ion-input name="year" formControlName="year" type="number" min="1888" [placeholder]="'MOVIES.FORM.YEAR' | translate"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-label color="primary" position="floating" for="duration">{{'MOVIES.FORM.DURATION' | translate}}</ion-label>
+        <ion-input name="duration" formControlName="duration" type="number" [placeholder]="'MOVIES.FORM.DURATION' | translate"></ion-input>
+      </ion-item>
+      <ion-item class="ion-margin-bottom">
+        <ion-label color="primary" position="floating" for="imdbRating">{{'MOVIES.FORM.RATING' | translate}}</ion-label>
+        <ion-input name="imdbRating" formControlName="imdbRating" type="number" max="10" [placeholder]="'MOVIES.FORM.RATING' | translate"></ion-input>
+      </ion-item>
+      <ion-button class="ion-margin-bottom-top" [disabled]="movieForm.invalid" type="submit" color="success" expand="full">{{buttonName}}</ion-button>
+    </form>
+  </ion-grid>
+</ion-content>

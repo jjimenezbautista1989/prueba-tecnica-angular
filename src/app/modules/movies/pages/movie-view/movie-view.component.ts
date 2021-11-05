@@ -7,6 +7,7 @@ import {MoviesService} from '../../../../core/services/movies.service';
 import {takeUntil} from 'rxjs/operators';
 import {MoviesStoreService} from '../../store/movies.store.service';
 import {Actor} from '../../../../shared/interfaces/actor';
+import {Movie} from '../../../../shared/interfaces/movie';
 
 @Component({
   selector: 'app-movie-view',
@@ -20,6 +21,7 @@ export class MovieViewComponent implements OnInit, OnDestroy {
   title: string;
   arrayActorsName: Array<string> = [];
   arrayCompanies: Companies[] = [];
+  arrayMovies: Movie[] = [];
 
   private _destroyed$ = new Subject<void>();
 
@@ -33,6 +35,7 @@ export class MovieViewComponent implements OnInit, OnDestroy {
       this._moviesService.getMovieById(id).subscribe(movie => {
         this.movie = movie;
         this.title = this.movie.title;
+        this._moviesStore.setLoading(false);
         this.initView();
       }, () => {
         this.goBack();
@@ -43,17 +46,21 @@ export class MovieViewComponent implements OnInit, OnDestroy {
   }
 
   initView() {
-    zip(this._moviesStore.getAllActors(), this._moviesStore.getAllCompanies())
+    zip(this._moviesStore.getAllActors(), this._moviesStore.getAllCompanies(), this._moviesStore.getAllMovies())
       .pipe(takeUntil(this._destroyed$))
-      .subscribe(([actors, studies]) => {
-        if (actors) {
-          for (const actorId of this.movie.actors) {
-            const actor: Actor = actors.find(a => a.id === actorId);
-            this.arrayActorsName.push(actor.first_name.concat(' ').concat(actor.last_name));
+      .subscribe(([actors, studies, movies]) => {
+        if (!actors && !studies && !movies) {
+          this.goBack();
+        } else {
+          if (actors) {
+            for (const actorId of this.movie.actors) {
+              const actor: Actor = actors.find(a => a.id === actorId);
+              this.arrayActorsName.push(actor.first_name.concat(' ').concat(actor.last_name));
+            }
           }
+          if (studies) {this.arrayCompanies = [...studies];}
+          if (movies) {this.arrayMovies = [...movies];}
         }
-        if (studies) {this.arrayCompanies = [...studies];}
-        this._moviesStore.setLoading(false);
       });
   }
 
@@ -64,6 +71,20 @@ export class MovieViewComponent implements OnInit, OnDestroy {
 
   goBack() {
     this.router.navigate(['movies']);
+  }
+
+  editMovie() {
+    this.router.navigate(['movies/edit-movie', this.movie.id]).then();
+  }
+
+  deleteMovie() {
+    this._moviesStore.setLoading(true);
+    this._moviesService.deleteMovie(this.movie.id.toString()).subscribe(() => {
+      this._moviesStore.setAllMovies(this.arrayMovies.filter(m => m.id !== this.movie.id));
+    }, () => {}, () => {
+      this._moviesStore.setLoading(false);
+      this.goBack();
+    });
   }
 
   ngOnDestroy(): void {

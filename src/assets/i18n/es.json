@@ -14,6 +14,19 @@
       "GENRE": "Géneros",
       "ACTORS": "Actores",
       "COMPANIES": "Estudio"
+    },
+    "FORM": {
+      "NEW_MOVIE": "Nueva Película",
+      "TITLE": "Título",
+      "POSTER": "Póster (URL)",
+      "GENRE": "Géneros",
+      "ACTORS": "Actores",
+      "COMPANIES": "Estudio",
+      "YEAR": "Año",
+      "DURATION": "Duración",
+      "RATING": "Puntuación",
+      "SAVE": "Guardar",
+      "UPDATE": "Acturalizar"
     }
   },
   "ACTORS": {

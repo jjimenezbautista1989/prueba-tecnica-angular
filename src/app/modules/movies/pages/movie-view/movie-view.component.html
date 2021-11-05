@@ -31,5 +31,13 @@
       </ng-container>
     </div>
   </div>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="success" (click)="editMovie()">
+      <ion-icon name="brush-outline"></ion-icon>
+    </ion-fab-button>
+    <ion-fab-button class="ion-margin-start" color="danger" (click)="deleteMovie()">
+      <ion-icon name="trash-bin-outline"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>
 

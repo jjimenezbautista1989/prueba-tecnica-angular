@@ -53,6 +53,10 @@ export class MoviesPage implements OnInit {
     this.router.navigate(['movies/view-movie', movie.id]).then();
   }
 
+  addMovie() {
+    this.router.navigate(['movies/add-movie']).then();
+  }
+
   async startLoading() {
     this.loading = await this.loadingController.create({
       message: this._translateService.instant('LOADING.MESSAGE')
