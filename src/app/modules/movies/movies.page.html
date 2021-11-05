@@ -5,7 +5,7 @@
     <ion-row>
       <ng-container *ngIf="_moviesStore.getAllMovies() | async; else noMovies">
         <ion-col *ngFor="let movie of _moviesStore.getAllMovies() | async" size="12" size-sm>
-          <ion-card>
+          <ion-card (click)="openMovie(movie)">
             <ion-card-header>
               <ion-card-title>{{movie.title}}</ion-card-title>
             </ion-card-header>

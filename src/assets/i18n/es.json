@@ -2,9 +2,19 @@
   "MENU": {
     "TITLE": "Menu"
   },
+  "LOADING":{
+    "MESSAGE": "Espere un momento..."
+  },
   "MOVIES": {
     "TITLE": "Películas",
-    "NO_MOVIES": "No hay películas"
+    "NO_MOVIES": "No hay películas",
+    "VIEW": {
+      "DURATION": "Duración",
+      "RATING": "Puntuación",
+      "GENRE": "Géneros",
+      "ACTORS": "Actores",
+      "COMPANIES": "Estudio"
+    }
   },
   "ACTORS": {
     "TITLE": "Actores"

@@ -5,6 +5,7 @@ import {Router} from '@angular/router';
 import {LoadingController} from '@ionic/angular';
 import {Subject} from 'rxjs';
 import {takeUntil} from 'rxjs/operators';
+import {TranslateService} from '@ngx-translate/core';
 
 @Component({
   selector: 'app-movies',
@@ -17,20 +18,18 @@ export class MoviesPage implements OnInit {
   private _destroyed$ = new Subject<void>();
 
   constructor(private _moviesService: MoviesService, private _moviesStore: MoviesStoreService, private router: Router,
-              private loadingController: LoadingController) {
+              private loadingController: LoadingController, private _translateService: TranslateService) {
   }
 
   ngOnInit() {
-    this.initLoading().then(() => {
-      this.getAllDataFromServices();
-      this._moviesStore.getLoading().pipe(takeUntil(this._destroyed$)).subscribe(isLoading => {
-        if (isLoading) {
-          this.startLoading().then();
-        } else {
-          this.finishLoading().then();
-        }
-      });
+    this._moviesStore.getLoading().pipe(takeUntil(this._destroyed$)).subscribe(isLoading => {
+      if (isLoading) {
+        this.startLoading().then();
+      } else {
+        this.finishLoading().then();
+      }
     });
+    this.getAllDataFromServices();
   }
 
   getAllDataFromServices() {
@@ -54,13 +53,10 @@ export class MoviesPage implements OnInit {
     this.router.navigate(['movies/view-movie', movie.id]).then();
   }
 
-  async initLoading() {
-    this.loading = await this.loadingController.create({
-      message: 'Please wait...'
-    });
-  }
-
   async startLoading() {
+    this.loading = await this.loadingController.create({
+      message: this._translateService.instant('LOADING.MESSAGE')
+    });
     await this.loading?.present();
   }
 

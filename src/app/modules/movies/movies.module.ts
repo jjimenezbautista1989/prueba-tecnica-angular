@@ -8,6 +8,7 @@ import { MoviesPageRoutingModule } from './movies-routing.module';
 
 import { MoviesPage } from './movies.page';
 import {SharedModule} from '../../shared/shared.module';
+import {MovieViewComponent} from './pages/movie-view/movie-view.component';
 
 @NgModule({
     imports: [
@@ -17,6 +18,6 @@ import {SharedModule} from '../../shared/shared.module';
         MoviesPageRoutingModule,
         SharedModule
     ],
-  declarations: [MoviesPage]
+  declarations: [MoviesPage, MovieViewComponent]
 })
 export class MoviesPageModule {}

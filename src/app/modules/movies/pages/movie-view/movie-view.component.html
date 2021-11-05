@@ -1,0 +1,35 @@
+<app-header [title]="title" [isBack]="true"></app-header>
+<ion-content>
+  <div class="movie-view" *ngIf="movie">
+    <div class="content-img ion-margin">
+      <img [src]="movie.poster" [alt]="movie.title"/>
+    </div>
+    <div class="movie-view--rating-and-duration ion-margin">
+      <div class="movie-view--rating-and-duration--content">
+        <span class="movie-view--rating-and-duration--content--title">{{'MOVIES.VIEW.RATING' | translate}}</span>
+        <span class="movie-view--rating-and-duration--content--title-sub">{{movie.imdbRating}}</span>
+      </div>
+      <div class="movie-view--rating-and-duration--content">
+        <span class="movie-view--rating-and-duration--content--title">{{'MOVIES.VIEW.DURATION' | translate}}</span>
+        <span class="movie-view--rating-and-duration--content--title-sub">{{movie.duration | duration}}</span>
+      </div>
+    </div>
+    <div class="movie-view--item ion-margin">
+      <span class="movie-view--item--title ion-margin-bottom">{{'MOVIES.VIEW.ACTORS' | translate}}</span>
+      <ng-container *ngFor="let name of arrayActorsName">
+        <span class="movie-view--item--title-sub">{{name}}</span>
+      </ng-container>
+    </div>
+    <div class="movie-view--item ion-margin">
+      <span class="movie-view--item--title ion-margin-bottom">{{'MOVIES.VIEW.COMPANIES' | translate}}</span>
+      <span class="movie-view--item--title-sub">{{getStudiesName(movie.companies)}}</span>
+    </div>
+    <div class="movie-view--item ion-margin">
+      <span class="movie-view--item--title ion-margin-bottom">{{'MOVIES.VIEW.GENRE' | translate}}</span>
+      <ng-container *ngFor="let genre of movie.genre">
+        <span>#{{genre}}</span>
+      </ng-container>
+    </div>
+  </div>
+</ion-content>
+
