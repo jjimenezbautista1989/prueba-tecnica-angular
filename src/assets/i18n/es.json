@@ -1,1 +1,14 @@
-{}
+{
+  "MOVIES": {
+    "TITLE": "Películas"
+  },
+  "ACTORS": {
+    "TITLE": "Actores"
+  },
+  "STUDIES": {
+    "TITLE": "Estudios"
+  },
+  "NO_PAGE": {
+    "TITLE": "Página no encontrada"
+  }
+}

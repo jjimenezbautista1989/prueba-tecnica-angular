@@ -7,14 +7,16 @@ import { IonicModule } from '@ionic/angular';
 import { NoPagePageRoutingModule } from './no-page-routing.module';
 
 import { NoPagePage } from './no-page.page';
+import {SharedModule} from '../../shared/shared.module';
 
 @NgModule({
-  imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
-    NoPagePageRoutingModule
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        IonicModule,
+        NoPagePageRoutingModule,
+        SharedModule
+    ],
   declarations: [NoPagePage]
 })
 export class NoPagePageModule {}
