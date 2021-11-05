@@ -3,7 +3,8 @@
     "TITLE": "Menu"
   },
   "MOVIES": {
-    "TITLE": "Películas"
+    "TITLE": "Películas",
+    "NO_MOVIES": "No hay películas"
   },
   "ACTORS": {
     "TITLE": "Actores"

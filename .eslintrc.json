@@ -44,7 +44,8 @@
             "format": ["PascalCase"],
             "prefix": ["is", "should", "has", "can", "did", "will"]
           }
-        ]
+        ],
+        "no-underscore-dangle": "off"
       }
     },
     {
