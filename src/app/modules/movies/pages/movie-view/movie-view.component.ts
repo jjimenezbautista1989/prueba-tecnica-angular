@@ -48,8 +48,8 @@ export class MovieViewComponent implements OnInit, OnDestroy {
   initView() {
     zip(this._moviesStore.getAllActors(), this._moviesStore.getAllCompanies(), this._moviesStore.getAllMovies())
       .pipe(takeUntil(this._destroyed$))
-      .subscribe(([actors, studies, movies]) => {
-        if (!actors && !studies && !movies) {
+      .subscribe(([actors, companies, movies]) => {
+        if (!actors && !companies && !movies) {
           this.goBack();
         } else {
           if (actors) {
@@ -58,15 +58,15 @@ export class MovieViewComponent implements OnInit, OnDestroy {
               this.arrayActorsName.push(actor.first_name.concat(' ').concat(actor.last_name));
             }
           }
-          if (studies) {this.arrayCompanies = [...studies];}
+          if (companies) {this.arrayCompanies = [...companies];}
           if (movies) {this.arrayMovies = [...movies];}
         }
       });
   }
 
-  getStudiesName(id) {
-    const studies = this.arrayCompanies?.find(s => s.id === id);
-    return studies?.name;
+  getCompaniesName(id) {
+    const companies = this.arrayCompanies?.find(s => s.id === id);
+    return companies?.name;
   }
 
   goBack() {

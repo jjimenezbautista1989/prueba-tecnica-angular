@@ -1,0 +1,21 @@
+.tag {
+  border: 1px solid var(--ion-color-primary);
+  border-radius: 5px;
+  width: fit-content;
+  padding: 8px;
+  max-height: 35px;
+
+  &--icon {
+    position: relative;
+    top: -25px;
+    right: -100%;
+    font-size: 25px;
+    background: white;
+  }
+
+  &--title {
+    position: relative;
+    top: -10px;
+    left: -10px;
+  }
+}

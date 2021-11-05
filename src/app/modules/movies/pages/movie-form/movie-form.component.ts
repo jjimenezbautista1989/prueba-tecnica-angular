@@ -14,7 +14,7 @@ import {takeUntil} from 'rxjs/operators';
 @Component({
   selector: 'app-movie-form',
   templateUrl: './movie-form.component.html',
-  styleUrls: ['./movie-form.component.css']
+  styleUrls: ['./movie-form.component.scss']
 })
 export class MovieFormComponent implements OnInit, OnDestroy {
 
@@ -69,8 +69,8 @@ export class MovieFormComponent implements OnInit, OnDestroy {
   initForm() {
     zip(this._moviesStore.getAllActors(), this._moviesStore.getAllCompanies(), this._moviesStore.getAllMovies())
       .pipe(takeUntil(this._destroyed$))
-      .subscribe(([actors, studies, movies]) => {
-        if (!actors && !studies && !movies) {
+      .subscribe(([actors, companies, movies]) => {
+        if (!actors && !companies && !movies) {
           this.goBack();
         } else {
           if (actors) {
@@ -79,7 +79,7 @@ export class MovieFormComponent implements OnInit, OnDestroy {
               this.setSelectedActors();
             }
           }
-          if (studies) {this.arrayCompanies = [...studies];}
+          if (companies) {this.arrayCompanies = [...companies];}
           if (movies) {
             this.arrayMovies = [...movies];
             if (!this.isEdit) {
@@ -115,6 +115,13 @@ export class MovieFormComponent implements OnInit, OnDestroy {
       this.arrayGenres.push(formGenre);
     }
     event.target.value = '';
+  }
+
+  deleteGenre(genre) {
+    const i = this.arrayGenres?.indexOf(genre.replace('#', ''));
+    if (i >= 0) {
+      this.arrayGenres?.splice( i, 1 );
+    }
   }
 
   submit() {

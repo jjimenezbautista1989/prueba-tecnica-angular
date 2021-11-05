@@ -15,7 +15,7 @@
         <ion-input (keyup.enter)="addGenre($event)" name="poster" type="text" formControlName="genre" [placeholder]="'MOVIES.FORM.GENRE' | translate"></ion-input>
       </ion-item>
       <div class="content-tag">
-        <span *ngFor="let genre of arrayGenres">#{{genre}}</span>
+        <app-tag *ngFor="let genre of arrayGenres" [title]="'#'.concat(genre)" (clickDelete)="deleteGenre($event)"></app-tag>
       </div>
       <ion-item class="ion-margin-bottom">
         <ion-label color="primary" position="floating" for="actors">{{'MOVIES.FORM.ACTORS' | translate}}</ion-label>
