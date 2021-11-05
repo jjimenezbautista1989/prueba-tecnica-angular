@@ -9,11 +9,16 @@ import {Companies} from '../../../shared/interfaces/companies';
 })
 export class MoviesStoreService {
 
+  public loading: BehaviorSubject<boolean> = new BehaviorSubject(false);
   public allMovies: BehaviorSubject<Movie[]> = new BehaviorSubject(undefined);
   public allActors: BehaviorSubject<Actor[]> = new BehaviorSubject(undefined);
   public allCompanies: BehaviorSubject<Companies[]> = new BehaviorSubject(undefined);
 
   constructor() { }
+
+  public getLoading() {
+    return this.loading.asObservable();
+  }
 
   public getAllMovies() {
     return this.allMovies.asObservable();
@@ -25,6 +30,10 @@ export class MoviesStoreService {
 
   public getAllCompanies() {
     return this.allCompanies.asObservable();
+  }
+
+  public setLoading(loading: boolean) {
+    this.loading.next(loading);
   }
 
   public setAllMovies(movies: Movie[]) {
