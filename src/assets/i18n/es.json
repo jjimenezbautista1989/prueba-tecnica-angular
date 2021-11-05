@@ -1,11 +1,14 @@
 {
+  "MENU": {
+    "TITLE": "Menu"
+  },
   "MOVIES": {
     "TITLE": "Películas"
   },
   "ACTORS": {
     "TITLE": "Actores"
   },
-  "STUDIES": {
+  "COMPANIES": {
     "TITLE": "Estudios"
   },
   "NO_PAGE": {
