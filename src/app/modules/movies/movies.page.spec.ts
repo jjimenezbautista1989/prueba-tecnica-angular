@@ -2,6 +2,10 @@ import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 
 import { MoviesPage } from './movies.page';
+import {HttpClientTestingModule} from '@angular/common/http/testing';
+import {RouterTestingModule} from '@angular/router/testing';
+import {TranslateModule} from '@ngx-translate/core';
+import {NO_ERRORS_SCHEMA} from '@angular/core';
 
 describe('MoviesPage', () => {
   let component: MoviesPage;
@@ -10,7 +14,10 @@ describe('MoviesPage', () => {
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ MoviesPage ],
-      imports: [IonicModule.forRoot()]
+      schemas: [NO_ERRORS_SCHEMA],
+      imports: [IonicModule.forRoot(), HttpClientTestingModule, RouterTestingModule,
+        TranslateModule.forRoot(),
+        HttpClientTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MoviesPage);

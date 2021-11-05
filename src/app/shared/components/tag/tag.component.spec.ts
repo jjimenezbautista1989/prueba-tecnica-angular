@@ -19,7 +19,10 @@ describe('TagComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should emit click', () => {
+    component.title = 'Test';
+    spyOn(component.clickDelete, 'emit').and.callThrough();
+    component.delete();
+    expect(component.clickDelete.emit).toHaveBeenCalled();
   });
 });
