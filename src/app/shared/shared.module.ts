@@ -1,18 +1,23 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HeaderComponent } from './components/header/header.component';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {HeaderComponent} from './components/header/header.component';
 import {IonicModule} from '@ionic/angular';
 import {TranslateModule} from '@ngx-translate/core';
-
+import {DurationPipe} from './pipes/duration.pipe';
+import {TagComponent} from './components/tag/tag.component';
 
 
 @NgModule({
   declarations: [
-    HeaderComponent
+    HeaderComponent,
+    TagComponent,
+    DurationPipe
   ],
   exports: [
     HeaderComponent,
-    TranslateModule
+    TranslateModule,
+    DurationPipe,
+    TagComponent
   ],
   imports: [
     CommonModule,
@@ -20,4 +25,5 @@ import {TranslateModule} from '@ngx-translate/core';
     TranslateModule
   ]
 })
-export class SharedModule { }
+export class SharedModule {
+}

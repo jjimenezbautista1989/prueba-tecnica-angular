@@ -2,8 +2,32 @@
   "MENU": {
     "TITLE": "Menu"
   },
+  "LOADING":{
+    "MESSAGE": "Espere un momento..."
+  },
   "MOVIES": {
-    "TITLE": "Películas"
+    "TITLE": "Películas",
+    "NO_MOVIES": "No hay películas",
+    "VIEW": {
+      "DURATION": "Duración",
+      "RATING": "Puntuación",
+      "GENRE": "Géneros",
+      "ACTORS": "Actores",
+      "COMPANIES": "Estudio"
+    },
+    "FORM": {
+      "NEW_MOVIE": "Nueva Película",
+      "TITLE": "Título",
+      "POSTER": "Póster (URL)",
+      "GENRE": "Géneros",
+      "ACTORS": "Actores",
+      "COMPANIES": "Estudio",
+      "YEAR": "Año",
+      "DURATION": "Duración",
+      "RATING": "Puntuación",
+      "SAVE": "Guardar",
+      "UPDATE": "Acturalizar"
+    }
   },
   "ACTORS": {
     "TITLE": "Actores"

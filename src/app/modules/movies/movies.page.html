@@ -1,5 +1,35 @@
 <app-header [title]="'MOVIES.TITLE'"></app-header>
 
 <ion-content>
-
+  <ion-grid>
+    <ion-row>
+      <ng-container *ngIf="_moviesStore.getAllMovies() | async; else noMovies">
+        <ion-col *ngFor="let movie of _moviesStore.getAllMovies() | async" size="12" size-sm>
+          <ion-card (click)="openMovie(movie)">
+            <ion-card-header>
+              <ion-card-title>{{movie.title}}</ion-card-title>
+            </ion-card-header>
+            <div class="content-img ion-margin-horizontal">
+              <img [src]="movie.poster" [alt]="movie.title"/>
+            </div>
+            <ion-card-content>
+              <ng-container *ngFor="let genre of movie.genre">
+                <span class="ion-padding-end">#{{genre}}</span>
+              </ng-container>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ng-container>
+      <ng-template #noMovies>
+        <ion-col>
+          <ion-title class="ion-text-center ion-margin-top">{{ 'MOVIES.NO_MOVIES' | translate}}</ion-title>
+        </ion-col>
+      </ng-template>
+    </ion-row>
+  </ion-grid>
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="addMovie()">
+    <ion-fab-button>
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
 </ion-content>

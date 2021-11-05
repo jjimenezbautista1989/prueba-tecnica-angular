@@ -1,0 +1,36 @@
+.movie-view {
+  &--rating-and-duration {
+    width: calc(100% - 32px);
+    display: flex;
+    justify-content: space-between;
+
+    &--content {
+      display: flex;
+      flex-direction: column;
+
+      &--title {
+        font-size: 18px;
+        font-weight: bold;
+      }
+
+      &--title-sub {
+        color: var(--ion-color-medium)
+      }
+    }
+  }
+
+  &--item {
+    display: flex;
+    flex-direction: column;
+
+    &--title {
+      font-size: 18px;
+      font-weight: bold;
+      border-bottom: 1px solid;
+    }
+
+    &--title-sub {
+      color: var(--ion-color-medium)
+    }
+  }
+}
